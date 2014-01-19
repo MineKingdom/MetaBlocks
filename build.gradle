@@ -1,0 +1,114 @@
+// Default tasks
+defaultTasks 'clean', 'setupDecompWorkspace', 'build', 'install'
+
+// Apply plugins
+apply plugin: 'forge'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+// Basic project information
+group = 'net.minekingdom'
+archivesBaseName = 'invisible-block'
+version = '1.0.0-SNAPSHOT'
+
+// Extended project information
+ext.projectName = 'InvisibleBlock'
+ext.inceptionYear = '2014'
+ext.packaging = 'jar'
+ext.url = 'http://minekingdom.net'
+ext.description = 'Forge mod that brings an invisible block.'
+ext.organization = 'MineKingdom'
+
+// Minecraft version
+ext.minecraftVersion = '1.6.4'
+
+// MinecraftForge version
+minecraft {
+    version = '1.6.4-9.11.1.964'
+}
+
+// Minimum version of Java required
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+// Define variables
+ext.buildNumber = '0'
+ext.ciSystem = 'unknown'
+ext.commit = 'unknown'
+
+// Configuration settings
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // Always check for new snapshots
+}
+
+// Plugin repositories and dependencies
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'sonatype-nexus-public'
+            url = 'https://oss.sonatype.org/content/repositories/public/'
+        }
+        maven {
+            name = 'forge-repo'
+            url = 'http://files.minecraftforge.net/maven/'
+        }
+        maven {
+            name = 'shadow-repo'
+            url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.6.0'
+        classpath 'org.gradle.plugins:shadow:0.7.4'
+    }
+}
+
+// Non-plugin repositories and dependencies
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name = 'sonatype-nexus-public'
+        url = 'https://oss.sonatype.org/content/repositories/public/'
+    }
+}
+
+// Filter, process, and include resources
+import org.apache.tools.ant.filters.*
+processResources {
+    // Include in final JAR
+    from(rootProject.rootDir) {
+        include 'LICENSE.txt'
+    }
+
+    // Filter info file variables
+    from('src/main/resources/mcmod.info') {
+        filter ReplaceTokens, tokens: [
+            "modid": projectName,
+            "name": projectName,
+            "description": project.ext.description,
+            "version": version,
+            "buildNumber": buildNumber,
+            "mcversion": minecraftVersion,
+            "url": url,
+            "authors": organization
+        ]
+    }
+}
+
+// Source compiler configuration
+configure([compileJava, compileTestJava]) {
+    options.compilerArgs << '-Xlint:all'
+    options.compilerArgs << '-Xlint:-path'
+    options.deprecation = true
+}
+
+// JAR manifest configuration
+manifest.mainAttributes(
+        "Built-By": System.properties['user.name'],
+        "Created-By": System.properties['java.vm.version'] + " (" + System.properties['java.vm.vendor'] + ")",
+        "Implementation-Title": name,
+        "Implementation-Version": version + "+" + ciSystem + "-b" + buildNumber + ".git-" + commit,
+        "Implementation-Vendor": url)

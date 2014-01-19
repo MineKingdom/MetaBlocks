@@ -1,0 +1,15 @@
+[{
+  "modid": "@modid@",
+  "name": "@name@",
+  "description": "@description@",
+  "version": "@version@-b@buildNumber@",
+  "credits": "",
+  "logoFile": "",
+  "mcversion": "@mcversion@",
+  "url": "@url@",
+  "updateUrl": "",
+  "authors": [ "@authors@" ],
+  "parent": "",
+  "screenshots": [],
+  "dependencies": [ "MinecraftForge" ]
+}]
