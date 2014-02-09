@@ -8,15 +8,15 @@ apply plugin: 'signing'
 
 // Basic project information
 group = 'net.minekingdom'
-archivesBaseName = 'invisible-block'
+archivesBaseName = 'metablocks'
 version = '1.0.0-SNAPSHOT'
 
 // Extended project information
-ext.projectName = 'InvisibleBlock'
+ext.projectName = 'MetaBlocks'
 ext.inceptionYear = '2014'
 ext.packaging = 'jar'
 ext.url = 'http://minekingdom.net'
-ext.description = 'Forge mod that brings an invisible block.'
+ext.description = 'Forge mod that brings utilitary blocks.'
 ext.organization = 'MineKingdom'
 
 // Minecraft version
@@ -25,6 +25,11 @@ ext.minecraftVersion = '1.6.4'
 // MinecraftForge version
 minecraft {
     version = '1.6.4-9.11.1.964'
+    replaceIn "src/main/java/net/minekingdom/metablocks/ModInfo.java"
+    replace "@modid@", projectName
+    replace "@name@", projectName
+    replace "@resourcepath@", "metablocks"
+    replace "@version@", project.version
 }
 
 // Minimum version of Java required
