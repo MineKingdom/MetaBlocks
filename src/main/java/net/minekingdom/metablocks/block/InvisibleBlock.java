@@ -14,12 +14,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class InvisibleBlock extends Block {
 
-	public InvisibleBlock(int id) {
-		super(id, Material.glass);
+	public InvisibleBlock() {
+		super(Material.glass);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setUnlocalizedName("invisible_block");
-		this.setTextureName(ModInfo.ressource_id + ":invisible_block");
+		this.setBlockName("invisible_block");
+		this.setBlockTextureName(ModInfo.mod_id + ":invisible_block");
 		this.setBlockUnbreakable();
 		this.setLightOpacity(0);
 	}
@@ -31,7 +31,7 @@ public class InvisibleBlock extends Block {
 	@SideOnly(Side.CLIENT)
 	private boolean isWearingGoggles() {
 		ItemStack i = Minecraft.getMinecraft().thePlayer.inventory.armorInventory[3];
-		return i != null && i.itemID == ModClass.googles.itemID;
+		return i != null && i.getItem() == ModClass.googles;
 	}
 	
 	public boolean isOpaqueCube() {
@@ -45,7 +45,7 @@ public class InvisibleBlock extends Block {
     		return false;
     	}
     	
-        return blockAccess.getBlockId(x, y, z) == this.blockID ? false : super.shouldSideBeRendered(blockAccess, x, y, z, 1 - side);
+        return blockAccess.getBlock(x, y, z) == this ? false : super.shouldSideBeRendered(blockAccess, x, y, z, 1 - side);
 	}
     
     @Override

@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -21,21 +22,21 @@ public class OneWayBlock extends Block {
 	
 	public final static double EPSILON = 0.31;
 
-	public OneWayBlock(int id) {
-		super(id, Material.rock);
+	public OneWayBlock() {
+		super(Material.rock);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setUnlocalizedName("one_way_block");
-		this.setTextureName(ModInfo.ressource_id + ":one_way");
+		this.setBlockName("one_way_block");
+		this.setBlockTextureName(ModInfo.mod_id + ":one_way");
 		this.setBlockUnbreakable();
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
 		for (int i = 0; i < 6; ++i) {
-			list.add(new ItemStack(id, 1, i));
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 	

@@ -20,15 +20,14 @@ ext.description = 'Forge mod that brings utilitary blocks.'
 ext.organization = 'MineKingdom'
 
 // Minecraft version
-ext.minecraftVersion = '1.6.4'
+ext.minecraftVersion = '1.7.2'
 
 // MinecraftForge version
 minecraft {
-    version = '1.6.4-9.11.1.964'
+    version = '1.7.2-10.12.0.1024'
     replaceIn "src/main/java/net/minekingdom/metablocks/ModInfo.java"
-    replace "@modid@", projectName
+    replace "@modid@", "metablocks"
     replace "@name@", projectName
-    replace "@resourcepath@", "metablocks"
     replace "@version@", project.version
 }
 
@@ -64,7 +63,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
         classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.6.0'
         classpath 'org.gradle.plugins:shadow:0.7.4'
     }

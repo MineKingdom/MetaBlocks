@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -21,21 +22,21 @@ public class ColorBlock extends Block {
 		0x676767, 0x4600F2, 0x00FF4F, 0x00FFFC, 0xFF002F, 0xFF00F5, 0xF8FF5A, 0xFFFFFF
 	};
 
-	public ColorBlock(int id) {
-		super(id, Material.rock);
+	public ColorBlock() {
+		super(Material.rock);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setUnlocalizedName("color_block");
-		this.setTextureName(ModInfo.ressource_id + ":blank");
+		this.setBlockName("color_block");
+		this.setBlockTextureName(ModInfo.mod_id + ":blank");
 		this.setBlockUnbreakable();
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
 		for (int i = 0; i < 16; ++i) {
-			list.add(new ItemStack(id, 1, i));
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 	

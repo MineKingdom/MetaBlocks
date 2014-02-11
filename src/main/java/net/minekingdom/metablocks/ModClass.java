@@ -13,12 +13,10 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.mod_id, name = ModInfo.mod_name, version = ModInfo.version)
-@NetworkMod(clientSideRequired = true)
 public class ModClass {
 	
 	public static final AxisAlignedBB NO_OUTLINE = AxisAlignedBB.getBoundingBox(0, 0, 0, 0, 0, 0);
@@ -57,9 +55,9 @@ public class ModClass {
 	}
 
 	private void setupBlocks() {
-		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(999), ItemBlock.class, invisibleBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(colorBlock     = new ColorBlock(998),     ItemBlock.class, colorBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(997),    ItemBlock.class, oneWayBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(killerBlock    = new KillerBlock(996),    ItemBlock.class, killerBlock.getUnlocalizedName(), null);
+		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(), ItemBlock.class, invisibleBlock.getUnlocalizedName(), null);
+		GameRegistry.registerBlock(colorBlock     = new ColorBlock(),     ItemBlock.class, colorBlock.getUnlocalizedName(), null);
+		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(),    ItemBlock.class, oneWayBlock.getUnlocalizedName(), null);
+		GameRegistry.registerBlock(killerBlock    = new KillerBlock(),    ItemBlock.class, killerBlock.getUnlocalizedName(), null);
 	}
 }

@@ -12,11 +12,9 @@ import net.minekingdom.metablocks.ModClass;
 
 public class KillerBlock extends InvisibleBlock {
 
-	public KillerBlock(int id) {
-		super(id);
-		
+	public KillerBlock() {
 		this.setCreativeTab(ModClass.tab);
-		this.setUnlocalizedName("killer_block");
+		this.setBlockName("killer_block");
 		this.setBlockUnbreakable();
 	}
 	
