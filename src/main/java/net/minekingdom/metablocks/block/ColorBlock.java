@@ -12,10 +12,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minekingdom.metablocks.ModClass;
 import net.minekingdom.metablocks.ModInfo;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ColorBlock extends Block {
+	
+	public final static String NAME = "color_block";
+	public final static String ID = ModInfo.mod_id + "." + NAME;
 	
 	public final static int[] COLORS = {
 		0x000000, 0x28008A, 0x009D2D, 0x00958F, 0x9F001A, 0xA3008B, 0x8D9933, 0xB6B6B6,
@@ -26,9 +30,12 @@ public class ColorBlock extends Block {
 		super(Material.rock);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setBlockName("color_block");
+		this.setBlockName(ID);
 		this.setBlockTextureName(ModInfo.mod_id + ":blank");
 		this.setBlockUnbreakable();
+		
+		FMLCommonHandler.instance().getFMLLogger().error(this.getUnlocalizedName());
+		FMLCommonHandler.instance().getFMLLogger().error(this.getTextureName());
 	}
 	
 	@Override

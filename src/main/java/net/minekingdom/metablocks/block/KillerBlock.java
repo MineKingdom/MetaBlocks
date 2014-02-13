@@ -9,12 +9,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minekingdom.metablocks.ModClass;
+import net.minekingdom.metablocks.ModInfo;
 
 public class KillerBlock extends InvisibleBlock {
+	
+	public final static String NAME = "killer_block";
+	public final static String ID = ModInfo.mod_id + "." + NAME;
 
 	public KillerBlock() {
 		this.setCreativeTab(ModClass.tab);
-		this.setBlockName("killer_block");
+		this.setBlockName(ID);
 		this.setBlockUnbreakable();
 	}
 	

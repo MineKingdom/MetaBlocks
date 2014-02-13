@@ -12,9 +12,8 @@ import net.minekingdom.metablocks.item.Goggles;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.mod_id, name = ModInfo.mod_name, version = ModInfo.version)
 public class ModClass {
@@ -24,7 +23,7 @@ public class ModClass {
 	@Instance(ModInfo.mod_id)
 	public static ModClass instance;
 	
-	public static Goggles googles;
+	public static Goggles goggles;
 	
 	public static InvisibleBlock invisibleBlock;
 	public static ColorBlock colorBlock;
@@ -34,30 +33,21 @@ public class ModClass {
 	public static CreativeTabs tab;
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLPreInitializationEvent event) {
 		tab = new Tab();
 		
 		setupItems();
 		setupBlocks();
-		setupLang();
 	}
 
 	private void setupItems() {
-		googles = new Goggles(1000);
-	}
-
-	private void setupLang() {
-		LanguageRegistry.instance().addNameForObject(googles,        "fr_FR", "Oeil d'un modérateur vicieux");
-		LanguageRegistry.instance().addNameForObject(invisibleBlock, "fr_FR", "Bloc Invisible");
-		LanguageRegistry.instance().addNameForObject(colorBlock,     "fr_FR", "Bloc coloré");
-		LanguageRegistry.instance().addNameForObject(oneWayBlock,    "fr_FR", "Bloc de passage");
-		LanguageRegistry.instance().addNameForObject(killerBlock,    "fr_FR", "Bloc de mort inconditionnelle");
+		GameRegistry.registerItem(goggles = new Goggles(), Goggles.ID);
 	}
 
 	private void setupBlocks() {
-		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(), ItemBlock.class, invisibleBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(colorBlock     = new ColorBlock(),     ItemBlock.class, colorBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(),    ItemBlock.class, oneWayBlock.getUnlocalizedName(), null);
-		GameRegistry.registerBlock(killerBlock    = new KillerBlock(),    ItemBlock.class, killerBlock.getUnlocalizedName(), null);
+		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(), ItemBlock.class, InvisibleBlock.ID);
+		GameRegistry.registerBlock(colorBlock     = new ColorBlock(),     ItemBlock.class, ColorBlock.ID);
+		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(),    ItemBlock.class, OneWayBlock.ID);
+		GameRegistry.registerBlock(killerBlock    = new KillerBlock(),    ItemBlock.class, KillerBlock.ID);
 	}
 }

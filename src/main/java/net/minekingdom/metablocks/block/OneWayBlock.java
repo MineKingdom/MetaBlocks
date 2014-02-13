@@ -20,14 +20,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class OneWayBlock extends Block {
 	
-	public final static double EPSILON = 0.31;
+	public final static String NAME = "one_way";
+	public final static String ID = ModInfo.mod_id + "." + NAME;
 
 	public OneWayBlock() {
 		super(Material.rock);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setBlockName("one_way_block");
-		this.setBlockTextureName(ModInfo.mod_id + ":one_way");
+		this.setBlockName(ID);
+		this.setBlockTextureName(ModInfo.mod_id + ":" + NAME);
 		this.setBlockUnbreakable();
 	}
 	

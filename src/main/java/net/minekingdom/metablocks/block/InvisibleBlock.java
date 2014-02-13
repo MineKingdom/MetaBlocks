@@ -9,19 +9,26 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minekingdom.metablocks.ModClass;
 import net.minekingdom.metablocks.ModInfo;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class InvisibleBlock extends Block {
+	
+	public final static String NAME = "invisible_block";
+	public final static String ID = ModInfo.mod_id + "." + NAME;
 
 	public InvisibleBlock() {
 		super(Material.glass);
 		
 		this.setCreativeTab(ModClass.tab);
-		this.setBlockName("invisible_block");
-		this.setBlockTextureName(ModInfo.mod_id + ":invisible_block");
+		this.setBlockName(ID);
+		this.setBlockTextureName(ModInfo.mod_id + ":" + NAME);
 		this.setBlockUnbreakable();
 		this.setLightOpacity(0);
+		
+		FMLCommonHandler.instance().getFMLLogger().error(this.getUnlocalizedName());
+		FMLCommonHandler.instance().getFMLLogger().error(this.getTextureName());
 	}
 	
 	public int getMobilityFlag() {
@@ -31,7 +38,7 @@ public class InvisibleBlock extends Block {
 	@SideOnly(Side.CLIENT)
 	private boolean isWearingGoggles() {
 		ItemStack i = Minecraft.getMinecraft().thePlayer.inventory.armorInventory[3];
-		return i != null && i.getItem() == ModClass.googles;
+		return i != null && i.getItem() == ModClass.goggles;
 	}
 	
 	public boolean isOpaqueCube() {
