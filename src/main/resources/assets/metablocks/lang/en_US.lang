@@ -1,5 +1,6 @@
 item.metablocks.invisible_goggles.name=Eye of the viscious moderator
-item.metablocks.invisible_block.name=Invisible Block
-item.metablocks.color_block.name=Color Block
-item.metablocks.one_way_block.name=One-way Block
-item.metablocks.killer_block.name=Block of unescapable death
+tile.metablocks.invisible_block.name=Invisible Block
+tile.metablocks.color_block.name=Color Block
+tile.metablocks.one_way_block.name=One-way Block
+tile.metablocks.killer_block.name=Block of unescapable death
+tile.metablocks.bouncer.name=Bouncy Block (x%f)

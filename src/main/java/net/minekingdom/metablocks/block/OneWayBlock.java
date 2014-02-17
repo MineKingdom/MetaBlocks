@@ -81,6 +81,10 @@ public class OneWayBlock extends Block {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisAlignedBB, List list, Entity entity) {
+		if (entity == null) {
+			return;
+		}
+		
 		Vec3 entityPos = Vec3.createVectorHelper(entity.posX, entity.posY + entity.getEyeHeight() / 2, entity.posZ);
 		Vec3 blockPos  = Vec3.createVectorHelper(x + 0.5, y + 0.5, z + 0.5);
 		

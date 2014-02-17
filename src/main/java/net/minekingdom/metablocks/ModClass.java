@@ -3,6 +3,7 @@ package net.minekingdom.metablocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.AxisAlignedBB;
+import net.minekingdom.metablocks.block.BouncerBlock;
 import net.minekingdom.metablocks.block.ColorBlock;
 import net.minekingdom.metablocks.block.InvisibleBlock;
 import net.minekingdom.metablocks.block.KillerBlock;
@@ -29,9 +30,10 @@ public class ModClass {
 	public static ColorBlock colorBlock;
 	public static OneWayBlock oneWayBlock;
 	public static KillerBlock killerBlock;
+	public static BouncerBlock bouncerBlock;
 	
 	public static CreativeTabs tab;
-
+	
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {
 		tab = new Tab();
@@ -41,13 +43,14 @@ public class ModClass {
 	}
 
 	private void setupItems() {
-		GameRegistry.registerItem(goggles = new Goggles(), Goggles.ID);
+		GameRegistry.registerItem(goggles = new Goggles(), Goggles.NAME);
 	}
 
 	private void setupBlocks() {
-		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(), ItemBlock.class, InvisibleBlock.ID);
-		GameRegistry.registerBlock(colorBlock     = new ColorBlock(),     ItemBlock.class, ColorBlock.ID);
-		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(),    ItemBlock.class, OneWayBlock.ID);
-		GameRegistry.registerBlock(killerBlock    = new KillerBlock(),    ItemBlock.class, KillerBlock.ID);
+		GameRegistry.registerBlock(invisibleBlock = new InvisibleBlock(), ItemBlock.class,         InvisibleBlock.NAME);
+		GameRegistry.registerBlock(colorBlock     = new ColorBlock(),     ItemBlock.class,         ColorBlock.NAME);
+		GameRegistry.registerBlock(oneWayBlock    = new OneWayBlock(),    ItemBlock.class,         OneWayBlock.NAME);
+		GameRegistry.registerBlock(killerBlock    = new KillerBlock(),    ItemBlock.class,         KillerBlock.NAME);
+		GameRegistry.registerBlock(bouncerBlock   = new BouncerBlock(),   BouncerBlock.Item.class, BouncerBlock.NAME);
 	}
 }
